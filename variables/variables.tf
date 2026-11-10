@@ -9,6 +9,13 @@ variable "instance_type" {
   #default = "t3.micro"
   description = "instance type of ec2"
 
+
+
+
+validation {
+  condition = contains(["t3.micro", "t3.small", "t3.medium", "t3.large"], var.instance_type)
+  error_message = "instance must be t3 family"
+  }
 }
 
 variable "ec2_tags" {
